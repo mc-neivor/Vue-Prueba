@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Progress />
+    <Navbar />
     <div id="nav">
       <router-link to="/about">About</router-link>
       <router-link to="/asd">Salir</router-link>
@@ -10,16 +10,21 @@
 </template>
 
 <script>
-import Progress from "./components/Progress";
+import Navbar from "./components/Navbar";
 export default {
   components: {
-    Progress,
+    Navbar,
   },
   setup() {},
 };
 </script>
 
 <style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 :root {
   --pink-50: #fef4f7;
   --pink-100: #fac9da;
@@ -49,6 +54,7 @@ export default {
   text-align: center;
   color: var(--bluegray-50);
   background-color: var(--bluegray-900);
+
   height: 100vh;
 }
 
