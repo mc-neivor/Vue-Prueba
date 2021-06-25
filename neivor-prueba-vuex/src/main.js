@@ -9,9 +9,11 @@ import Toast from 'primevue/toast'
 import ToastService from 'primevue/toastservice'
 import ProgressBar from "primevue/progressbar";
 
-//import 'primevue/resources/themes/luna-pink/theme.css'
-import 'primevue/resources/primevue.min.css'
 import 'primeicons/primeicons.css'
+import 'primevue/resources/primevue.min.css'
+import 'primevue/resources/themes/luna-pink/theme.css'
+import 'primeflex/primeflex.css';
+
 const app = createApp(App)
 app.use(PrimeVue, { ripple: true })
 app.use(store)

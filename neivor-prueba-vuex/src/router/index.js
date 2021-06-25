@@ -2,10 +2,25 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    path: '/',
+    name: 'Home',
+    component: () => import(/* webpackChunkName: "/" */ '../views/Home.vue')
+  },
+  {
+    path: '/propietario',
+    name: 'Propietario',
+    component: () => import(/* webpackChunkName: "propietario" */ '../views/Propietario.vue')
+  },
+  {
+    path: '/datos',
+    name: 'Datos',
+    component: () => import(/* webpackChunkName: "datos" */ '../views/Datos.vue')
+  },
+  {
+    path: '/datos2',
+    name: 'Datos2',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Datos2.vue')
+  },
 ]
 
 const router = createRouter({

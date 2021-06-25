@@ -1,44 +1,37 @@
 <template>
-  <div class="container">
-    <ProgressBar v-if="progress" mode="indeterminate" class="bar" />
-    <Button @click="add">Toggle</Button>
-  </div>
+  <fragment>
+    <ProgressBar :value="progreso" class="bar" />
+  </fragment>
 </template>
 
 <script>
-import { ref } from "vue";
+import { mapGetters, mapActions } from "vuex";
 export default {
-  setup() {
-    let progress = ref(true);
-    const add = () => {
-      progress.value = !progress.value;
-    };
-
-    return {
-      progress,
-      add,
-    };
+  computed: {
+    ...mapGetters({
+      progreso: "progress",
+    }),
   },
+  methods: {
+    ...mapActions({
+      selectPage: "setPageA",
+    }),
+  },
+  /* mounted() {
+    this.selectPage("asdasd");
+  }, */
 };
 </script>
 
-<style lang="scss" scoped>
-.container {
-  ::v-deep(.bar.p-progressbar) {
-    height: 2rem;
-    background: transparent;
-    .p-progressbar-value {
-      background: var(--pink-400);
-    }
-  }
-
-  button {
-    background: blue;
-    color: #fff;
-    outline: none;
-    border: none;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-  }
-}
+<style lang="sass" scoped>
+$neivorBar: #f95758
+$bluegray-50: #f7f9f9
+::v-deep
+  .bar.p-progressbar
+    z-index: -1
+    height: 1.5rem
+    background: transparent
+    border-radius: 0
+    .p-progressbar-value
+      background: $neivorBar
 </style>

@@ -2,30 +2,34 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    msg: 'Vuex desde Cero asd',
-    nombre: "Joaquín",
-    apellido: "Cardozo",
-    amigos: ['Ana', 'Juan'],
-    amigo: {},
+    page: 'Registrar visitar',
+    progress: 0,
+    user: {}
   },
   mutations: {
-    addAmigo(state) {
-      state.amigos = [state.amigo, ...state.amigos]
+    setPage(state, payload) {
+      state.page = payload.page
+      state.progress = payload.progress
+    },
+    setUser(state, payload) {
+      state.user = {
+        payload
+      }
     },
   },
   actions: {
-    addAmigoAction({ commit }) {
-      commit('addAmigo')
-    }
+    setPageAction({ commit }, payload) {
+      commit('setPage', payload)
+    },
   },
   modules: {
   },
   getters: {
-    mensaje(state) {
-      return state.msg
+    page(state) {
+      return state.page
     },
-    nombreCompleto(state) {
-      return `${state.nombre} ${state.apellido}`
+    progress(state) {
+      return state.progress
     }
   }
 })
