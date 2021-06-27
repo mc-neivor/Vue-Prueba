@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="navbar">
-      <Button class="back" @click="back">
+      <Button class="back p-button-raised" @click="back">
         <i class="pi pi-arrow-left" />
       </Button>
       <span>{{ page }}</span>
@@ -54,7 +54,9 @@ $bluegray-900: #263238
       background: transparent
       outline: none
       border: none
+      box-shadow: none
       border-radius: 50%
+
       justify-content: center
       i
         font-size: 2rem

@@ -1,84 +1,147 @@
 <template>
-  <div>
-    <h5>Basic</h5>
-    <InputText type="text" v-model="value1" />
-    <span :style="{ marginLeft: '.5em' }">{{ value1 }}</span>
-
-    <h5>Floating Label</h5>
-    <span class="p-float-label">
-      <InputText id="username" type="text" v-model="value2" />
-      <label for="username">Username</label>
-    </span>
-
-    <h5>Left Icon</h5>
-    <span class="p-input-icon-left">
-      <i class="pi pi-search" />
-      <InputText type="text" v-model="value3" placeholder="Search" />
-    </span>
-
-    <h5>Right Icon</h5>
-    <span class="p-input-icon-right">
-      <i class="pi pi-spin pi-spinner" />
-      <InputText type="text" v-model="value4" />
-    </span>
-
-    <h5>Help Text</h5>
-    <div class="p-field">
-      <label for="username1">Username</label>
-      <InputText
-        id="username1"
-        type="username"
-        aria-describedby="username1-help"
-      />
-      <small id="username1-help"
-        >Enter your username to reset your password.</small
-      >
+  <div class="p-col-10 p-md-6 p-lg-3">
+    <div class="title">
+      <span>Algunos datos más</span>
     </div>
-
-    <h5>Invalid</h5>
-    <div class="p-field">
-      <label for="username2">Username</label>
-      <InputText
-        id="username2"
-        type="username"
-        aria-describedby="username2-help"
-        class="p-invalid"
-      />
-      <small id="username2-help" class="p-error"
-        >Username is not available.</small
-      >
-    </div>
-
-    <h5>Disabled</h5>
-    <InputText type="text" v-model="value5" disabled />
-
-    <h5>Sizes</h5>
-    <div class="sizes">
-      <InputText type="text" class="p-inputtext-sm" placeholder="Small" />
-      <InputText type="text" placeholder="Normal" />
-      <InputText type="text" class="p-inputtext-lg" placeholder="Large" />
+    <div class="main">
+      <div class="switch">
+        <span>Visita de varios días</span>
+        <Switch v-model="dateCheck" />
+      </div>
+      <div class="days">
+        <span
+          class="p-float-label"
+          :style="dateCheck ? 'width: 49%' : 'width: 100%'"
+        >
+          <Calendar
+            id="calendar"
+            v-model="dateIn"
+            :showIcon="true"
+            class="date"
+            style="width: 100%"
+          />
+          <label for="calendar">Día de inicio</label>
+        </span>
+        <span class="p-float-label" v-if="dateCheck" style="width: 49%">
+          <Calendar
+            id="calendar"
+            v-model="dateOut"
+            :showIcon="true"
+            class="date"
+            style="width: 100%"
+          />
+          <label for="calendar">Día de fin</label>
+        </span>
+      </div>
+      <span class="p-float-label">
+        <Dropdown
+          id="dropdown"
+          v-model="visit"
+          :options="typeVisit"
+          optionLabel="name"
+          class="typeVisit"
+        />
+        <label for="dropdown">Tipo de visita</label>
+      </span>
+      <div class="switch">
+        <span>¿Viene en coche?</span>
+        <Switch v-model="dateCheck" />
+      </div>
+      <NextButton name="Siguiente" nav="/datos2" i="user-plus" />
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+import NextButton from "@/components/NextButton";
+/* import InputField from "@/components/InputField"; */
 export default {
+  components: {
+    NextButton,
+    /* InputField, */
+  },
   data() {
     return {
-      value1: null,
-      value2: null,
-      value3: null,
-      value4: null,
-      value5: "PrimeVue",
+      dateCheck: false,
+      dateIn: null,
+      dateOut: null,
+      visit: null,
+      typeVisit: [
+        { name: "New York", code: "NY" },
+        { name: "Rome", code: "RM" },
+        { name: "London", code: "LDN" },
+        { name: "Istanbul", code: "IST" },
+        { name: "Paris", code: "PRS" },
+      ],
     };
+  },
+  computed: {
+    ...mapGetters({
+      progreso: "progress",
+    }),
+  },
+  methods: {
+    ...mapActions(["setPageAction"]),
+  },
+  mounted() {
+    this.setPageAction({ page: "Registrar Visita", progress: 50 });
   },
 };
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
+$disabled: #707070
+$enabled: #3bbfad
+
+::v-deep
+
+  .p-inputswitch
+    .p-inputswitch-slider
+      background: $disabled
+    .p-inputswitch-slider:before
+      background: #fff
+
+  .p-inputswitch-checked
+    .p-inputswitch-slider
+      background: $enabled
+    .p-inputswitch-slider:before
+      background: #fff;
+
+.title
+  height: 8rem
+  display: flex
+  align-items: center
+  justify-content: center
+  font-size: 3rem
+  font-weight: bolder
+
+.main
+  height: calc(100% - 8rem)
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+
+.switch, .days
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+.typeVisit
+  width: 100%
+
 .p-inputtext
+  background: transparent
   display: block;
   margin-bottom: .5rem;
+  color: var(--surface-a)
   &:last-child
     margin-bottom: 0;
+.day
+  .date
+    button
+      background: blue !important
 </style>
+
+/* .p-float-label width: 100% margin: 0 height: 3.5rem justify-content:
+space-between; .date width: 100% .p-float-label-2 @extend .p-float-label */

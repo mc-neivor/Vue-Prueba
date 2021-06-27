@@ -42,7 +42,7 @@ $bluegray-900: #263238
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: var(--surface-200);
+  color: var(--surface-200) !important;
   height: 100vh
 
 #nav
