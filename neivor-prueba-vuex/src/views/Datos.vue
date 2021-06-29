@@ -1,5 +1,5 @@
 <template>
-  <div class="p-col-10 p-md-6 p-lg-3">
+  <div class="p-col-11 p-md-6">
     <div class="title">
       <span>Datos de la visita</span>
     </div>

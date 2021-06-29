@@ -1,14 +1,25 @@
 <template>
-  <div class="p-col-11 p-md-6 p-lg-3">
+  <div class="p-col-11 p-md-6">
     <div class="title">
       <span>¿Qué vehículo usa?</span>
     </div>
     <div class="main">
-      <SelectButton v-model="vehicle" :options="vehicles" dataKey="value">
-        <template #option="slotProps">
-          <i :class="slotProps.option.icon"></i>
-        </template>
-      </SelectButton>
+      <div>
+        <SelectButton v-model="vehicle" :options="vehicles" dataKey="value">
+          <template #option="slotProps">
+            <i :class="slotProps.option.icon"></i>
+          </template>
+        </SelectButton>
+        <span class="p-float-label">
+          <InputText
+            id="enrollment"
+            type="text"
+            v-model="enrollment"
+            style="width:100%"
+          />
+          <label for="enrollment">Matrícula</label>
+        </span>
+      </div>
       <NextButton name="Siguiente" nav="/datos2" i="user-plus" />
     </div>
   </div>
@@ -29,6 +40,7 @@ export default {
         { icon: "pi pi-apple", value: "Bicicleta" },
         { icon: "pi pi-desktop", value: "Moto" },
       ],
+      enrollment: null,
     };
   },
   computed: {
@@ -55,12 +67,13 @@ $enabled: #3bbfad
   .p-selectbutton
     display: flex
     justify-content: space-between
+    margin-bottom: 3rem
   .p-buttonset
     .p-component
       border: 1px solid gray
-      border-radius: 0.25rem !important
+      border-radius: 0.5rem !important
       margin: 0 0.25rem !important
-      width: 33%
+      width: 30%
       display: flex
       justify-content: center
       i

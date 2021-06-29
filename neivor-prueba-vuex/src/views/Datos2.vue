@@ -1,5 +1,5 @@
 <template>
-  <div class="p-col-10 p-md-6 p-lg-3">
+  <div class="p-col-11 p-md-6">
     <div class="title">
       <span>Algunos datos más</span>
     </div>
@@ -45,7 +45,7 @@
       </span>
       <div class="switch">
         <span>¿Viene en coche?</span>
-        <Switch v-model="dateCheck" />
+        <Switch v-model="vehicle" />
       </div>
       <NextButton name="Siguiente" nav="/vehicle" />
     </div>
@@ -67,12 +67,11 @@ export default {
       dateIn: null,
       dateOut: null,
       visit: null,
+      vehicle: null,
       typeVisit: [
-        { name: "New York", code: "NY" },
-        { name: "Rome", code: "RM" },
+        { name: "Social", code: "Social" },
+        { name: "Normal", code: "Normal" },
         { name: "London", code: "LDN" },
-        { name: "Istanbul", code: "IST" },
-        { name: "Paris", code: "PRS" },
       ],
     };
   },
@@ -96,6 +95,9 @@ $enabled: #3bbfad
 
 ::v-deep
 
+  .p-inputtext
+    padding: 1rem 0.75rem
+
   .p-inputswitch
     .p-inputswitch-slider
       background: $disabled
@@ -113,7 +115,7 @@ $enabled: #3bbfad
   display: flex
   align-items: center
   justify-content: center
-  font-size: 3rem
+  font-size: 2.25rem
   font-weight: bolder
 
 .main
