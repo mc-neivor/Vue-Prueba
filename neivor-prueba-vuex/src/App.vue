@@ -26,23 +26,19 @@ export default {
 <style lang="sass">
 
 @import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
-
-$pink-300: #f1749e;
-$pink-400: #ed4981;
-$bluegray-50: #f7f9f9;
-$bluegray-900: #263238
+$fontColor: #4b4f54
 
 *
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: $fontColor;
 
 #app
   font-family: Jost, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: var(--surface-200) !important;
   height: 100vh
 
 #nav

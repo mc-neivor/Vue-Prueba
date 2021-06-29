@@ -47,7 +47,7 @@
         <span>¿Viene en coche?</span>
         <Switch v-model="dateCheck" />
       </div>
-      <NextButton name="Siguiente" nav="/datos2" i="user-plus" />
+      <NextButton name="Siguiente" nav="/vehicle" />
     </div>
   </div>
 </template>
@@ -137,11 +137,4 @@ $enabled: #3bbfad
   color: var(--surface-a)
   &:last-child
     margin-bottom: 0;
-.day
-  .date
-    button
-      background: blue !important
 </style>
-
-/* .p-float-label width: 100% margin: 0 height: 3.5rem justify-content:
-space-between; .date width: 100% .p-float-label-2 @extend .p-float-label */

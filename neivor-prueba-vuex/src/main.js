@@ -11,6 +11,7 @@ import ProgressBar from "primevue/progressbar";
 import InputSwitch from 'primevue/inputswitch';
 import Calendar from 'primevue/calendar';
 import Dropdown from 'primevue/dropdown';
+import SelectButton from 'primevue/selectbutton';
 
 import 'primeicons/primeicons.css'
 import 'primevue/resources/primevue.min.css'
@@ -29,5 +30,6 @@ app.component('Calendar', Calendar)
 app.component('Toast', Toast)
 app.component('Switch', InputSwitch)
 app.component('ProgressBar', ProgressBar)
+app.component('SelectButton', SelectButton)
 app.mount('#app')
 
